@@ -13,7 +13,7 @@ def sistema():
 
     return sistema
 
-def teste_verificarSenha_sucesso(sistema):
+def test_verificarSenha_sucesso(sistema):
     autenticado, user_id = sistema.verificarSenha("admin", "123")
     assert autenticado == True
     assert user_id == 0
@@ -22,17 +22,17 @@ def teste_verificarSenha_sucesso(sistema):
     assert autenticado == True
     assert user_id == 1
 
-def teste_verificarSenha_falha_usuario_incorreto(sistema):
+def test_verificarSenha_falha_usuario_incorreto(sistema):
     autenticado, user_id = sistema.verificarSenha("admin", "999")
     assert autenticado == False
     assert user_id == -1
 
-def teste_verificarSenha_falha_senha_incorreta(sistema):
+def test_verificarSenha_falha_senha_incorreta(sistema):
     autenticado, user_id = sistema.verificarSenha("joao", "123")
     assert autenticado == False
     assert user_id == -1
 
-def teste_verificarSenha_usuario_nao_existente(sistema):
+def test_verificarSenha_usuario_nao_existente(sistema):
     autenticado, user_id = sistema.verificarSenha("maria", "123")
     assert autenticado == False
     assert user_id == -1

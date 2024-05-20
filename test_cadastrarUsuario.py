@@ -67,3 +67,4 @@ def test_cadastrarUsuario_nivel_alto(sistema):
     # Verifique as associações de funcionalidades
     func_liberadas = [f.idFuncionalidade for f in sistema.funcionalidadeUsuarios if f.idUsuario == 3 and f.liberado]
     assert set(func_liberadas) == {1, 2, 3}  # Admin deve ter acesso a todas as funcionalidades
+    

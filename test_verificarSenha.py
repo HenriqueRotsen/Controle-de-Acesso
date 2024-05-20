@@ -36,3 +36,4 @@ def teste_verificarSenha_usuario_nao_existente(sistema):
     autenticado, user_id = sistema.verificarSenha("maria", "123")
     assert autenticado == False
     assert user_id == -1
+    

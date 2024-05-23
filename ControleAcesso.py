@@ -65,7 +65,8 @@ class SistemaGerenciamentoAcesso:
                 
 
     def cadastrarFuncionalidade(self, funcionalidade):
-        self.funcionalidades.append(funcionalidade)
+        if(funcionalidade.nivel > 0):
+            self.funcionalidades.append(funcionalidade)
 
     def associarFuncionalidadeUsuarios(self, funcionalidadeUsuarios):
         self.funcionalidadeUsuarios.append(funcionalidadeUsuarios)
@@ -139,7 +140,7 @@ class SistemaGerenciamentoAcesso:
 if __name__ == "__main__":
     sistema = SistemaGerenciamentoAcesso()
 
-    ## Cadastrar funcionalidades
+    ## Cadastrar funcionalidades TESTE
     funcionalidade1 = Funcionalidades(id=1, nome="Cadastrar Usuário", nivel=5)
     funcionalidade2 = Funcionalidades(id=2, nome="Remover Usuário", nivel=5)
     funcionalidade3 = Funcionalidades(id=3, nome="Editar Usuário", nivel=1)
@@ -147,11 +148,9 @@ if __name__ == "__main__":
     sistema.cadastrarFuncionalidade(funcionalidade2)
     sistema.cadastrarFuncionalidade(funcionalidade3)
       
-    ## Cadastrar usuários
+    ## Cadastrar usuários TESTE
     admin = Usuarios(id=0, nome="Admin", username="admin", email="admin@", setor="", cargo="", nivel=5)
-    usuario1 = Usuarios(id=1, nome="João", username="joao", email="joao@example.com", setor="RH", cargo="Analista", nivel=1)
-    #usuario2 = Usuarios(id=2, nome="Maria", email="maria@example.com", setor="TI", cargo="Desenvolvedor", nivel=2)
-    
+    usuario1 = Usuarios(id=1, nome="João", username="joao", email="joao@example.com", setor="RH", cargo="Analista", nivel=1)    
     sistema.cadastrarUsuario(admin)
     sistema.cadastrarUsuario(usuario1)
        

@@ -14,6 +14,13 @@ def test_cadastrarFuncionalidade_sucesso(sistema):
     assert sistema.funcionalidades[0].id == 1
     assert sistema.funcionalidades[0].nome == "Cadastrar Usuário"
     assert sistema.funcionalidades[0].nivel == 5
+    
+def test_cadastrarFuncionalidade_nivel_invalido(sistema):
+    funcionalidade = Funcionalidades(id=1, nome="Cadastrar Usuário", nivel=-1)
+    sistema.cadastrarFuncionalidade(funcionalidade)
+    
+    # Verifique se a funcionalidade foi adicionada ao sistema
+    assert len(sistema.funcionalidades) == 0  
 
 def test_cadastrarFuncionalidade_multiplas(sistema):
     funcionalidade1 = Funcionalidades(id=1, nome="Cadastrar Usuário", nivel=5)
@@ -29,9 +36,11 @@ def test_cadastrarFuncionalidade_multiplas(sistema):
     assert sistema.funcionalidades[0].id == 1
     assert sistema.funcionalidades[0].nome == "Cadastrar Usuário"
     assert sistema.funcionalidades[0].nivel == 5
+    
     assert sistema.funcionalidades[1].id == 2
     assert sistema.funcionalidades[1].nome == "Remover Usuário"
     assert sistema.funcionalidades[1].nivel == 5
+    
     assert sistema.funcionalidades[2].id == 3
     assert sistema.funcionalidades[2].nome == "Editar Usuário"
     assert sistema.funcionalidades[2].nivel == 1

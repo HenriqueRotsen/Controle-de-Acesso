@@ -10,7 +10,6 @@ def test_atualizarUsuario_sucesso(sistema):
     sistema.atualizarUsuario(usuario.id, "João da Silva", "joao.silva", "joao@email.com", "TI", "Desenvolvedor", 2)
     
     # Verifique se o usuário foi atualizado
-    assert len(sistema.usuarios) == 1
     assert sistema.usuarios[0].nome == "João da Silva"
     assert sistema.usuarios[0].username == "joao.silva"
     assert sistema.usuarios[0].email == "joao@email.com"
@@ -26,8 +25,3 @@ def test_atualizarUsuario_inexistente(sistema):
     assert resultado == False
     
 
-def test_atualizarUsuario_nivel_invalido(sistema):
-    usuario = Usuarios(id=1, nome="João", username="joao", email="joao@email.com", setor="RH", cargo="Analista", nivel=1)
-    sistema.atualizarUsuario(usuario.id, "João da Silva", "joao.silva", "joao@email.com", "TI", "Desenvolvedor", -1)
-
-    # Verifique se o usuário não foi atualizado

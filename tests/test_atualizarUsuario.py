@@ -25,3 +25,9 @@ def test_atualizarUsuario_inexistente(sistema):
     # Verifique se o usuário não foi atualizado
     assert resultado == False
     
+
+def test_atualizarUsuario_nivel_invalido(sistema):
+    usuario = Usuarios(id=1, nome="João", username="joao", email="joao@email.com", setor="RH", cargo="Analista", nivel=1)
+    sistema.atualizarUsuario(usuario.id, "João da Silva", "joao.silva", "joao@email.com", "TI", "Desenvolvedor", -1)
+
+    # Verifique se o usuário não foi atualizado

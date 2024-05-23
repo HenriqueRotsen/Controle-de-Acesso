@@ -1,5 +1,3 @@
-import sys
-import numpy as np
 from dataclasses import dataclass
 
 # Variavel global de número de usuario

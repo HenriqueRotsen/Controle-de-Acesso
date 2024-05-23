@@ -1,4 +1,10 @@
+import sys
+import numpy as np
 from dataclasses import dataclass
+
+# Variavel global de número de usuario
+contadorId = 0
+contadorFunc = 0
 
 @dataclass
 class Usuarios:
@@ -87,41 +93,47 @@ class SistemaGerenciamentoAcesso:
                     print(str(funcionalidadeAssociada.id) + "- " + funcionalidadeAssociada.nome)
         print("0- Sair")
         
+    def novoUsuario():
+        #Id definido automaticamente
+        contadorId += 1
+        idUsuario = contadorId
+        
+        nomeUsuario = input("Digite o nome do usuário: ")
+        usernameUsuario = input("Digite o username do usuário: ")
+        emailUsuario = input("Digite o email do usuário: ")
+        setorUsuario = input("Digite o setor do usuário: ")
+        cargoUsuario = input("Digite o cargo do usuário: ")
+        nivelUsuario = input("Digite o nível do usuário: ")
+
+        usuario = Usuarios(
+            id=idUsuario,
+            nome=nomeUsuario,
+            username=usernameUsuario,
+            email=emailUsuario,
+            setor=setorUsuario,
+            cargo=cargoUsuario,
+            nivel=nivelUsuario
+        )
+
+        return usuario
     
-def novoUsuario():
-    idUsuario = input("Digite o ID do usuário: ")
-    nomeUsuario = input("Digite o nome do usuário: ")
-    usernameUsuario = input("Digite o username do usuário: ")
-    emailUsuario = input("Digite o email do usuário: ")
-    setorUsuario = input("Digite o setor do usuário: ")
-    cargoUsuario = input("Digite o cargo do usuário: ")
-    nivelUsuario = input("Digite o nível do usuário: ")
+    def novaFuncionalidade():
+        #Id definido automaticamente
+        contadorFunc += 1
+        idFuncionalidade = contadorFunc
+        
+        nomeFuncionalidade = input("Digite o nome da funcionalidade: ")
+        nivelFuncionalidade = input("Digite o nível da funcionalidade: ")
 
-    usuario = Usuarios(
-        id=idUsuario,
-        nome=nomeUsuario,
-        username=usernameUsuario,
-        email=emailUsuario,
-        setor=setorUsuario,
-        cargo=cargoUsuario,
-        nivel=nivelUsuario
-    )
+        funcionalidade = Funcionalidades(
+            id=idFuncionalidade,
+            nome=nomeFuncionalidade,
+            nivel=nivelFuncionalidade
+        )
 
-    return usuario
+        return funcionalidade
 
 
-def novaFuncionalidade():
-    idFuncionalidade = input("Digite o ID da funcionalidade: ")
-    nomeFuncionalidade = input("Digite o nome da funcionalidade: ")
-    nivelFuncionalidade = input("Digite o nível da funcionalidade: ")
-
-    funcionalidade = Funcionalidades(
-        id=idFuncionalidade,
-        nome=nomeFuncionalidade,
-        nivel=nivelFuncionalidade
-    )
-
-    return funcionalidade
 
 
 if __name__ == "__main__":

@@ -21,7 +21,7 @@ def funcionalidade_usuario_exemplo():
 
 def test_mostrar_funcionalidades_liberadas(sistema_gerenciamento_acesso, usuario_exemplo, funcionalidade_exemplo, funcionalidade_usuario_exemplo, capsys):
     sistema_gerenciamento_acesso.cadastrarUsuario(usuario_exemplo)
-    sistema_gerenciamento_acesso.cadastrarFuncionalidade(funcionalidade_exemplo)
+    sistema_gerenciamento_acesso.funcionalidades.append(funcionalidade_exemplo)
     sistema_gerenciamento_acesso.associarFuncionalidadeUsuarios(funcionalidade_usuario_exemplo)
 
     sys.stdout = io.StringIO()

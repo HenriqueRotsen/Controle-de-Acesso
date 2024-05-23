@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from Calculadora import calculadora
 
 # Variavel global de número de usuario
 contadorId = 0
@@ -59,12 +60,7 @@ class SistemaGerenciamentoAcesso:
                                                       idUsuario=usuario.id,
                                                       idFuncionalidade=funcionalidade.id,
                                                       liberado=False)
-                self.funcionalidadeUsuarios.append(funcUsuario)
-                
-
-    def cadastrarFuncionalidade(self, funcionalidade):
-        if(funcionalidade.nivel > 0):
-            self.funcionalidades.append(funcionalidade)
+                self.funcionalidadeUsuarios.append(funcUsuario)                
 
     def associarFuncionalidadeUsuarios(self, funcionalidadeUsuarios):
         self.funcionalidadeUsuarios.append(funcionalidadeUsuarios)
@@ -85,12 +81,15 @@ class SistemaGerenciamentoAcesso:
         return False
     
     def mostrarFuncionalidadesLiberadas(self, id_usuario):
+        liberadas = []
         for funcUsuario in self.funcionalidadeUsuarios:
             if funcUsuario.idUsuario == id_usuario and funcUsuario.liberado:
                 funcionalidadeAssociada = next((funcionalidade for funcionalidade in self.funcionalidades if funcionalidade.id == funcUsuario.idFuncionalidade), None)
                 if funcionalidadeAssociada:
+                    liberadas.append(funcionalidadeAssociada.id)
                     print(str(funcionalidadeAssociada.id) + "- " + funcionalidadeAssociada.nome)
         print("0- Sair")
+        return liberadas
         
     def novoUsuario(self):
         #Id definido automaticamente
@@ -133,7 +132,6 @@ class SistemaGerenciamentoAcesso:
 
         return funcionalidade
 
-
     def atualizarUsuario(self, id_usuario, nome, username, email, setor, cargo, nivel):
         for usuario in self.usuarios:
             if usuario.id == id_usuario:
@@ -146,6 +144,10 @@ class SistemaGerenciamentoAcesso:
                 return True
         return False
 
+    def removerUsuario(self, id_usuario):
+        self.usuarios = [user for user in self.usuarios if user.id != id_usuario]
+        self.funcionalidadeUsuarios = [fu for fu in self.funcionalidadeUsuarios if fu.idUsuario != id_usuario]
+        print(f"Usuário {id_usuario} removido com sucesso.")
 
 if __name__ == "__main__":
     sistema = SistemaGerenciamentoAcesso()
@@ -154,9 +156,11 @@ if __name__ == "__main__":
     funcionalidade1 = Funcionalidades(id=1, nome="Cadastrar Usuário", nivel=5)
     funcionalidade2 = Funcionalidades(id=2, nome="Remover Usuário", nivel=5)
     funcionalidade3 = Funcionalidades(id=3, nome="Editar Usuário", nivel=1)
-    sistema.cadastrarFuncionalidade(funcionalidade1)
-    sistema.cadastrarFuncionalidade(funcionalidade2)
-    sistema.cadastrarFuncionalidade(funcionalidade3)
+    funcionalidade4 = Funcionalidades(id=4, nome="Calculadora", nivel=2)
+    sistema.funcionalidades.append(funcionalidade1)
+    sistema.funcionalidades.append(funcionalidade2)
+    sistema.funcionalidades.append(funcionalidade3)
+    sistema.funcionalidades.append(funcionalidade4)
       
     ## Cadastrar usuários TESTE
     admin = Usuarios(id=0, nome="Admin", username="admin", email="admin@", setor="", cargo="", nivel=5)
@@ -183,14 +187,33 @@ if __name__ == "__main__":
             if(autenticado):
                 print("\n----- TP/TESTES DE SOFTWARE -----\n")
                 print("Dado seu nível de acesso, essas são suas opções:")
-                sistema.mostrarFuncionalidadesLiberadas(userId)
+                liberadas = sistema.mostrarFuncionalidadesLiberadas(userId)
                 opcao = input("Escolha uma opção: ")
                 
-                if opcao == "0":
-                    print("Deslogando...")
+                if (int(opcao) in liberadas):                    
+                    for f in liberadas:
+                        if(int(opcao) == f):
+                            if opcao == '1':
+                                user = sistema.novoUsuario()
+                                sistema.cadastrarUsuario(user)
+                            if opcao == '2':
+                                removerId = input("Qual o ID do usuário que deve ser removido? ")
+                                sistema.removerUsuario(removerId)
+                            if opcao == '3':
+                                atualizarId = input("Qual o ID do usuário que deve ser editado? ")                            
+                                nomeUsuario = input("Digite o nome do usuário: ")
+                                usernameUsuario = input("Digite o username do usuário: ")
+                                emailUsuario = input("Digite o email do usuário: ")
+                                setorUsuario = input("Digite o setor do usuário: ")
+                                cargoUsuario = input("Digite o cargo do usuário: ")
+                                nivelUsuario = input("Digite o nível do usuário: ")
+
+                                sistema.atualizarUsuario(atualizarId, nomeUsuario, usernameUsuario, emailUsuario, setorUsuario, cargoUsuario, nivelUsuario)
+                            if opcao == '4':
+                                calculadora()
                 else:
-                    print("Opção inválida. Tente novamente.")
-                      
+                    print("Você não pode acessar essa funcionalidade ou ela não existe")
+                        
         elif opcao == "0":
             print("Saindo do programa...")
             break

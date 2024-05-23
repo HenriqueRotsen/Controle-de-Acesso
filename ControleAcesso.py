@@ -134,6 +134,17 @@ class SistemaGerenciamentoAcesso:
         return funcionalidade
 
 
+    def atualizarUsuario(self, id_usuario, nome, username, email, setor, cargo, nivel):
+        for usuario in self.usuarios:
+            if usuario.id == id_usuario:
+                usuario.nome = nome
+                usuario.username = username
+                usuario.email = email
+                usuario.setor = setor
+                usuario.cargo = cargo
+                usuario.nivel = nivel
+                return True
+        return False
 
 
 if __name__ == "__main__":

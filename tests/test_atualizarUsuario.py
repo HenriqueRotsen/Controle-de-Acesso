@@ -7,6 +7,7 @@ def sistema():
 
 def test_atualizarUsuario_sucesso(sistema):
     usuario = Usuarios(id=1, nome="João", username="joao", email="joao@email.com", setor="RH", cargo="Analista", nivel=1)
+    sistema.cadastrarUsuario(usuario)
     sistema.atualizarUsuario(usuario.id, "João da Silva", "joao.silva", "joao@email.com", "TI", "Desenvolvedor", 2)
     
     # Verifique se o usuário foi atualizado

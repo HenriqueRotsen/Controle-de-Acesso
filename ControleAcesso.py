@@ -139,7 +139,7 @@ class SistemaGerenciamentoAcesso:
             return False
         if any(usuario.username == username and usuario.id != id_usuario for usuario in self.usuarios):
             return False
-        if any(usuario.nivel < nivel for usuario in self.usuarios):
+        if any(usuario.nivel < 0):
             return False
     # O ID do usuário existe e o novo username não está duplicado, então atualiza os dados
         for usuario in self.usuarios:

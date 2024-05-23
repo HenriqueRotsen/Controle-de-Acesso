@@ -3,7 +3,7 @@
 ## Membros do Grupo
 
 - Henrique Rotsen Santos Ferreira
-- Gabriel Castelo
+- Gabriel Castelo Branco Rocha Alencar Pinto - 2020006523
 - Bruno Henrique
 
 ## Explicação do Sistema

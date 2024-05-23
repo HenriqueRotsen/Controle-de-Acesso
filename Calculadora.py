@@ -1,3 +1,17 @@
+def soma(num1, num2):
+    return num1 + num2
+
+def subtracao(num1, num2):
+    return num1 - num2
+
+def multiplicacao(num1, num2):
+    return num1 * num2
+
+def divisao(num1, num2):
+    if num2 == 0:
+        raise ZeroDivisionError("Erro: Divisão por zero!")
+    return num1 / num2
+
 def calculadora():
     print("\n--- CALCULADORA ---\n")
     print("Escolha a operação:")
@@ -16,19 +30,12 @@ def calculadora():
     num2 = float(input("Digite o segundo número: "))
 
     if operacao == "1":
-        resultado = num1 + num2
-        print(f"Resultado: {num1} + {num2} = {resultado}")
+        soma(num1, num2)
     elif operacao == "2":
-        resultado = num1 - num2
-        print(f"Resultado: {num1} - {num2} = {resultado}")
+        subtracao(num1, num2)
     elif operacao == "3":
-        resultado = num1 * num2
-        print(f"Resultado: {num1} * {num2} = {resultado}")
+        multiplicacao(num1, num2)
     elif operacao == "4":
-        if num2 != 0:
-            resultado = num1 / num2
-            print(f"Resultado: {num1} / {num2} = {resultado}")
-        else:
-            print("Erro: Divisão por zero!")
+        divisao(num1, num2)
     else:
         print("Operação inválida. Tente novamente.")

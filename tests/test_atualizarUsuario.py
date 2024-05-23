@@ -20,7 +20,8 @@ def test_atualizarUsuario_sucesso(sistema):
 
 def test_atualizarUsuario_inexistente(sistema):
     usuario = Usuarios(id=1, nome="João", username="joao", email="joao@email.com", setor="RH", cargo="Analista", nivel=1)
-    resultado = sistema.atualizarDadosUsuario(999, "Novo Nome", "novo_username", "novo@email.com", "Novo Setor", "Novo Cargo", 3)
+    sistema.cadastrarUsuario(usuario)
+    resultado = sistema.atualizarUsuario(999, "Novo Nome", "novo_username", "novo@email.com", "Novo Setor", "Novo Cargo", 3)
 
     # Verifique se o usuário não foi atualizado
     assert resultado == False

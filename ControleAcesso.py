@@ -133,6 +133,13 @@ class SistemaGerenciamentoAcesso:
         return funcionalidade
 
     def atualizarUsuario(self, id_usuario, nome, username, email, setor, cargo, nivel):
+        if not any(usuario.id == id_usuario for usuario in self.usuarios):
+            return False
+        if any(usuario.username == username and usuario.id != id_usuario for usuario in self.usuarios):
+            return False
+        if any(usuario.nivel < 0):
+            return False
+    # O ID do usuário existe e o novo username não está duplicado, então atualiza os dados
         for usuario in self.usuarios:
             if usuario.id == id_usuario:
                 usuario.nome = nome
@@ -142,12 +149,15 @@ class SistemaGerenciamentoAcesso:
                 usuario.cargo = cargo
                 usuario.nivel = nivel
                 return True
+    # Se o loop terminou sem atualizar, retorna False
         return False
 
     def removerUsuario(self, id_usuario):
         self.usuarios = [user for user in self.usuarios if user.id != id_usuario]
         self.funcionalidadeUsuarios = [fu for fu in self.funcionalidadeUsuarios if fu.idUsuario != id_usuario]
         print(f"Usuário {id_usuario} removido com sucesso.")
+
+
 
 if __name__ == "__main__":
     sistema = SistemaGerenciamentoAcesso()

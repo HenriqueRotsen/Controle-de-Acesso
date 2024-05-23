@@ -92,8 +92,9 @@ class SistemaGerenciamentoAcesso:
                     print(str(funcionalidadeAssociada.id) + "- " + funcionalidadeAssociada.nome)
         print("0- Sair")
         
-    def novoUsuario():
+    def novoUsuario(self):
         #Id definido automaticamente
+        global contadorId
         contadorId += 1
         idUsuario = contadorId
         
@@ -156,8 +157,9 @@ if __name__ == "__main__":
     while True:
         print("\n----- MENU -----\n")
         print("1- Login")
+        print("2- Cadastrar Usuário")
         print("0- Sair")
-
+        
         opcao = input("Escolha uma opção: ")
 
         if opcao == "1":
@@ -181,5 +183,12 @@ if __name__ == "__main__":
         elif opcao == "0":
             print("Saindo do programa...")
             break
+
+        elif opcao == "2":
+            print("\n--- CADASTRAR USUÁRIO ---\n")
+            usuario = sistema.novoUsuario()
+            sistema.cadastrarUsuario(usuario)
+            print("Usuário cadastrado com sucesso!")
+
         else:
             print("Opção inválida. Tente novamente.")

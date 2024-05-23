@@ -135,10 +135,11 @@ class SistemaGerenciamentoAcesso:
 
 
     def atualizarUsuario(self, id_usuario, nome, username, email, setor, cargo, nivel):
-    # Verifica se o ID do usuário existe na lista de usuários
         if not any(usuario.id == id_usuario for usuario in self.usuarios):
             return False
         if any(usuario.username == username and usuario.id != id_usuario for usuario in self.usuarios):
+            return False
+        if any(usuario.nivel < nivel for usuario in self.usuarios):
             return False
     # O ID do usuário existe e o novo username não está duplicado, então atualiza os dados
         for usuario in self.usuarios:
@@ -148,12 +149,11 @@ class SistemaGerenciamentoAcesso:
                 usuario.email = email
                 usuario.setor = setor
                 usuario.cargo = cargo
-                if usuario.nivel < 0:
-                    return False
                 usuario.nivel = nivel
                 return True
     # Se o loop terminou sem atualizar, retorna False
         return False
+
 
 
 

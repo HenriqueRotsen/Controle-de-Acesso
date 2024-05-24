@@ -288,9 +288,13 @@ class SistemaGerenciamentoAcesso:
         Args:
             id_usuario (int): ID do usuário a ser removido.
         """
-        self.usuarios = [user for user in self.usuarios if user.id != id_usuario]
-        self.funcionalidadeUsuarios = [fu for fu in self.funcionalidadeUsuarios if fu.idUsuario != id_usuario]
-        print(f"Usuário {id_usuario} removido com sucesso.")
+        if any(usuario.id == id_usuario for usuario in self.usuarios):
+            self.usuarios = [user for user in self.usuarios if user.id != id_usuario]
+            self.funcionalidadeUsuarios = [fu for fu in self.funcionalidadeUsuarios if fu.idUsuario != id_usuario]
+            print(f"Usuário {id_usuario} removido com sucesso.")
+            return True
+        else:
+            return False
 
 
 if __name__ == "__main__":

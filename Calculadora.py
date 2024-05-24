@@ -55,6 +55,21 @@ def divisao(num1: float, num2: float) -> float:
         raise ZeroDivisionError("Erro: Divisão por zero!")
     return num1 / num2
 
+
+def exp(num1: float, num2: float) -> float:
+    """
+    Retorna o resultado da exponenciação de num1 elevado à potência de num2.
+
+    Args:
+        num1 (float): A base.
+        num2 (float): O expoente.
+
+    Returns:
+        float: O resultado de num1 elevado à potência de num2.
+    """
+    return num1 ** num2
+
+
 def calculadora():
     """
     Interface de linha de comando para uma calculadora simples que realiza
@@ -68,6 +83,7 @@ def calculadora():
         2- Subtração
         3- Multiplicação
         4- Divisão
+        5- Potenciação
         0- Sair
     """
     print("\n--- CALCULADORA ---\n")
@@ -76,6 +92,7 @@ def calculadora():
     print("2- Subtração")
     print("3- Multiplicação")
     print("4- Divisão")
+    print("5- Potência")
     print("0- Sair")
 
     operacao = input("Escolha uma operação: ")
@@ -97,5 +114,8 @@ def calculadora():
             print(f"Resultado: {divisao(num1, num2)}")
         except ZeroDivisionError as e:
             print(e)
+    elif operacao == "5":
+        print(f"Resultado: {exp(num1, num2)}")
+        
     else:
         print("Operação inválida. Tente novamente.")

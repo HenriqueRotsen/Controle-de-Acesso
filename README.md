@@ -2,7 +2,7 @@
 
 ## Membros do Grupo
 
-- Henrique Rotsen Santos Ferreira
+- Henrique Rotsen Santos Ferreira - 2020100945
 - Gabriel Castelo Branco Rocha Alencar Pinto - 2020006523
 - Bruno Henrique E. Pereira - 2020006418
 
@@ -17,10 +17,12 @@ Este é um sistema de gerenciamento de acesso que controla os privilégios de us
 ### Funcionalidades Principais:
 
 - **Cadastro de Usuários**: Administradores podem cadastrar novos usuários fornecendo informações básicas e nível de acesso.
-- **Cadastro de Funcionalidades**: Administradores podem cadastrar novas funcionalidades especificando o nome e o nível mínimo de acesso necessário.
 - **Autenticação de Usuários**: Usuários podem fazer login fornecendo username e senha.
 - **Verificação de Acesso**: O sistema verifica se um usuário tem acesso a uma funcionalidade específica com base no nível de acesso.
 - **Listagem de Funcionalidades**: Após o login, os usuários podem ver uma lista de funcionalidades às quais têm acesso.
+- **Calculadora Comum**: Usuários que possuem acesso podem acessar uma Calculadora
+- **Calculadora de Equações**: Usuários que possuem acesso podem acessar uma Calculadora de Equações mais complexa
+- **Calculadora Física**: Usuários que possuem acesso podem acessar uma Calculadora voltada para física 
 
 ## Tecnologias Utilizadas
 

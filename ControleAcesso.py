@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 from Calculadora import calculadora
+from Calculadora_Bhaskara import menu as calculadora_bhaskara
+from Calculadora_fisica import menu as calculadora_fisica
 
 # Variavel global de número de usuario
 CONTADOR_ID = 0
@@ -306,11 +308,13 @@ if __name__ == "__main__":
     funcionalidade3 = Funcionalidades(id=3, nome="Editar Usuário", nivel=1)
     funcionalidade4 = Funcionalidades(id=4, nome="Calculadora", nivel=2)
     funcionalidade5 = Funcionalidades(id=5, nome="Calculadora de Equações", nivel=2)
+    funcionalidade6 = Funcionalidades(id=6, nome="Calculadora Física", nivel=3)
     sistema.funcionalidades.append(funcionalidade1)
     sistema.funcionalidades.append(funcionalidade2)
     sistema.funcionalidades.append(funcionalidade3)
     sistema.funcionalidades.append(funcionalidade4)
     sistema.funcionalidades.append(funcionalidade5)
+    sistema.funcionalidades.append(funcionalidade6)
       
     ## Cadastrar usuários TESTE
     admin = Usuarios(id=0, nome="Admin", username="admin", email="admin@", setor="", cargo="", nivel=5)
@@ -361,6 +365,12 @@ if __name__ == "__main__":
                                 sistema.atualizarUsuario(atualizarId, nomeUsuario, usernameUsuario, emailUsuario, setorUsuario, cargoUsuario, nivelUsuario)
                             if opcao == '4':
                                 calculadora()
+                            
+                            if opcao == '5':
+                                calculadora_bhaskara()
+                                
+                            if opcao == '6':
+                                calculadora_fisica()
                 else:
                     print("Você não pode acessar essa funcionalidade ou ela não existe")
                         

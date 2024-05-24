@@ -11,7 +11,7 @@ def test_calcular_forca():
     assert calcular_forca(10, 2) == 20.0
 
 def test_calcular_trabalho():
-    assert calcular_trabalho(10, 2) == 20.0
+    assert calcular_trabalho(10, 2, 45) == 20.0
 
 def test_calcular_energia_potencial_gravitacional():
     assert calcular_energia_potencial_gravitacional(10, 2) == 196.0
@@ -38,10 +38,10 @@ def test_calcular_energia_eletrica():
     assert calcular_energia_eletrica(10, 2) == 20.0
 
 def test_calcular_energia_elastica():
-    assert calcular_energia_elastica(10, 2) == 10.0
+    assert calcular_energia_elastica(10, 2) == 20.0
 
 def test_calcular_frequencia():
     assert calcular_frequencia(10) == 0.1
 
 def test_calcular_energia_mecanica():
-    assert calcular_energia_mecanica(10, 2) == 20.0
+    assert calcular_energia_mecanica(10, 2) == 12.0

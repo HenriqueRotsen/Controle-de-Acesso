@@ -69,7 +69,7 @@ def calcular_raizes_quadraticas():
     print(calcular_raizes(a, b, c))
 
 
-def calcular_raiz_linear():
+def calcular_raiz_linear(a: float, b: float) -> str:
     """
     Interface de linha de comando para calcular a raiz de uma equação linear.
 

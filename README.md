@@ -4,7 +4,7 @@
 
 - Henrique Rotsen Santos Ferreira
 - Gabriel Castelo Branco Rocha Alencar Pinto - 2020006523
-- Bruno Henrique
+- Bruno Henrique E. Pereira - 2020006418
 
 ## Explicação do Sistema
 

@@ -305,10 +305,12 @@ if __name__ == "__main__":
     funcionalidade2 = Funcionalidades(id=2, nome="Remover Usuário", nivel=5)
     funcionalidade3 = Funcionalidades(id=3, nome="Editar Usuário", nivel=1)
     funcionalidade4 = Funcionalidades(id=4, nome="Calculadora", nivel=2)
+    funcionalidade5 = Funcionalidades(id=5, nome="Calculadora de Equações", nivel=2)
     sistema.funcionalidades.append(funcionalidade1)
     sistema.funcionalidades.append(funcionalidade2)
     sistema.funcionalidades.append(funcionalidade3)
     sistema.funcionalidades.append(funcionalidade4)
+    sistema.funcionalidades.append(funcionalidade5)
       
     ## Cadastrar usuários TESTE
     admin = Usuarios(id=0, nome="Admin", username="admin", email="admin@", setor="", cargo="", nivel=5)

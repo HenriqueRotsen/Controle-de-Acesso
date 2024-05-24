@@ -11,7 +11,7 @@ def test_calcular_forca():
     assert calcular_forca(10, 2) == 20.0
 
 def test_calcular_trabalho():
-    assert calcular_trabalho(10, 2, 45) == 20.0
+    assert calcular_trabalho(5, 4, 30) == 17.0
 
 def test_calcular_energia_potencial_gravitacional():
     assert calcular_energia_potencial_gravitacional(10, 2) == 196.0

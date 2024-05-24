@@ -71,15 +71,26 @@ def calcular_raizes_quadraticas():
 
 def calcular_raiz_linear(a: float, b: float) -> str:
     """
-    Interface de linha de comando para calcular a raiz de uma equação linear.
+    Calcula a raiz de uma equação linear do tipo ax + b = 0.
 
-    Solicita ao usuário os coeficientes da equação linear e exibe o resultado.
+    Args:
+        a (float): Coeficiente do termo linear.
+        b (float): Termo constante.
+
+    Returns:
+        str: Uma mensagem indicando o valor da raiz da equação.
+
+    Raises:
+        ValueError: Se os coeficientes a e b não forem números reais.
     """
-    print("\n--- CALCULAR RAIZ DE UMA EQUAÇÃO LINEAR ---\n")
-    a = float(input("Digite o coeficiente a: "))
-    b = float(input("Digite o coeficiente b: "))
-    
-    print(calcular_raiz_linear(a, b))
+    if a == 0:
+        if b == 0:
+            return "A equação é uma identidade (0 = 0) e tem infinitas soluções."
+        else:
+            return "A equação é impossível (0 ≠ 0) e não tem solução."
+    else:
+        raiz = -b / a
+        return f"A raiz da equação é: {raiz}"
 
 
 def menu():

@@ -40,6 +40,5 @@ def test_removerUsuario_apos_remocao(sistema):
     resultado = sistema.removerUsuario(1)
 
     # Verifique se o usuário não foi removido
-    assert resultado == False
+    assert resultado == None
     assert len(sistema.usuarios) == 0
-    

@@ -39,7 +39,7 @@ class Funcionalidades:
         nome (str): _description_
         nivel (int): _description_
     """
-    def __init__(self, id: int, nome: str, nivel: str):
+    def __init__(self, id: int, nome: str, nivel: int):
         self.id = id
         self.nome = nome
         self.nivel = nivel
@@ -159,20 +159,18 @@ class SistemaGerenciamentoAcesso:
         Returns:
             bool: True se o usuário tiver acesso, False caso contrário.
         """
-        for usuario in self.usuarios:
-            if usuario.id == id_usuario:
-                for funcionalidadeUsuarios in self.funcionalidadeUsuarios:
-                    if (funcionalidadeUsuarios.idUsuario == id_usuario and
-                            funcionalidadeUsuarios.idFuncionalidade == id_funcionalidade):
-                        for funcionalidade in self.funcionalidades:
-                            if funcionalidade.id == id_funcionalidade:
-                                if usuario.nivel <= funcionalidade.nivel:
-                                    funcionalidadeUsuarios.liberado = True
-                                    return True
-                                else:
-                                    funcionalidadeUsuarios.liberado = False
-                                    return False
+        usuario = next((user for user in self.usuarios if user.id == id_usuario), None)
+        if not usuario:
+            return False
+
+        funcionalidade = next((func for func in self.funcionalidades if func.id == id_funcionalidade), None)
+        if not funcionalidade:
+            return False
+
+        if usuario.nivel >= funcionalidade.nivel:
+            return True
         return False
+
 
     def mostrarFuncionalidadesLiberadas(self, id_usuario):
         """
@@ -213,7 +211,7 @@ class SistemaGerenciamentoAcesso:
         emailUsuario = input("Digite o email do usuário: ")
         setorUsuario = input("Digite o setor do usuário: ")
         cargoUsuario = input("Digite o cargo do usuário: ")
-        nivelUsuario = input("Digite o nível do usuário: ")
+        nivelUsuario = int(input("Digite o nível do usuário: "))  # Conversão para int
 
         usuario = Usuarios(
             id=idUsuario,
@@ -318,15 +316,12 @@ if __name__ == "__main__":
       
     ## Cadastrar usuários TESTE
     admin = Usuarios(id=0, nome="Admin", username="admin", email="admin@", setor="", cargo="", nivel=5)
-    usuario1 = Usuarios(id=1, nome="João", username="joao", email="joao@example.com", setor="RH", cargo="Analista", nivel=1)    
     sistema.cadastrarUsuario(admin)
-    sistema.cadastrarUsuario(usuario1)
        
     print("Bem vindo, esse é um sistema para demonstrar o controle de acesso de vários usuários no sistema")
     while True:
         print("\n----- MENU -----\n")
         print("1- Login")
-        print("2- Cadastrar Usuário")
         print("0- Sair")
         
         opcao = input("Escolha uma opção: ")
@@ -377,12 +372,6 @@ if __name__ == "__main__":
         elif opcao == "0":
             print("Saindo do programa...")
             break
-
-        elif opcao == "2":
-            print("\n--- CADASTRAR USUÁRIO ---\n")
-            usuario = sistema.novoUsuario()
-            sistema.cadastrarUsuario(usuario)
-            print("Usuário cadastrado com sucesso!")
 
         else:
             print("Opção inválida. Tente novamente.")

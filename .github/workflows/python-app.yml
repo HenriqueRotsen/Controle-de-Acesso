@@ -18,11 +18,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v4.5.0
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-
     - uses: actions/checkout@v4
     - name: Set up Python 3.10
       uses: actions/setup-python@v4
@@ -36,3 +31,9 @@ jobs:
     - name: Test with pytest
       run: |
         pytest tests/
+    - name: Upload coverage reports to Codecov
+      run: |
+        # Options are alpine, linux, macos, windows
+        curl -Os https://cli.codecov.io/latest/linux/codecov
+        chmod +x codecov
+        ./codecov --verbose upload-process --fail-on-error -t ${{ secrets.CODECOV_TOKEN }} -n 'service'-${{ github.run_id }} -F service -f coverage-service.xml

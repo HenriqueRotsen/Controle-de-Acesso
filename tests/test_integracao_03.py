@@ -2,7 +2,7 @@ import pytest
 import unittest
 from ControleAcesso import Funcionalidades, Usuarios, SistemaGerenciamentoAcesso
 
-@pytest.fixture
+
 class TestSistemaGerenciamentoAcesso(unittest.TestCase):
     def setUp(self):
         self.sistema = SistemaGerenciamentoAcesso()

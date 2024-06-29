@@ -31,6 +31,9 @@ jobs:
     - name: Test with pytest
       run: |
         pytest tests/
+    - name: Pegando cobertura e salvando em xml
+      run: |
+        pytest --cov --cov-report=xml:coverage-service.xml
     - name: making codecov
       uses: codecov/codecov-action@v4.5.0
       with:
